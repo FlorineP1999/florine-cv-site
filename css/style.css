@@ -1,73 +1,304 @@
-/* =========================================================
-   FEUILLE DE STYLE SPÉCIALE IMPRESSION PDF
-   ========================================================= */
-@media print {
+/* ---------------------------------------------------------
+   GOOGLE FONT : TITILLIUM WEB
+   ---------------------------------------------------------
+   → Importation de la police utilisée dans tout le site.
+   → Les chiffres (200,300,400...) = épaisseurs disponibles
+--------------------------------------------------------- */
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:200,300,400,700,900);
 
-  /* Garder les couleurs à l’impression */
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
 
-  /* Supprimer la navbar */
-  .navbar,
-  nav,
-  .navbar-default {
-    display: none !important;
-  }
+/* ---------------------------------------------------------
+   PARAMÈTRES GLOBAUX DU SITE
+--------------------------------------------------------- */
+body {
+  font-family: 'Titillium Web', sans-serif; /* Police générale */
+  color: #000; /* Couleur du texte par défaut */
+}
 
-  /* Corriger les marges globales */
-  body {
-    margin: 0;
-    padding: 0;
-  }
 
-  /* Éviter les coupures dans tes blocs */
-  .welcome,
-  .profile,
-  .resume,
-  .portfolio,
-  .contact,
-  .services,
-  section,
-  article,
-  .service-box {
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
+/* ---------------------------------------------------------
+   NAVIGATION (Barre du haut)
+--------------------------------------------------------- */
+.navbar-default {
+  background: #fff; /* Couleur de fond blanche */
+  border: none;     /* Supprime la bordure grise par défaut */
+}
 
-  /* S’assurer que les titres ne restent pas seuls en bas de page */
-  h1, h2, h3 {
-    page-break-after: avoid !important;
-  }
+.navbar-default ul li a {
+  cursor: pointer;  /* Change le curseur au survol */
+}
 
-  /* Forcer un fond blanc pour tout */
-  html, body {
-    background: #fff !important;
-  }
 
-  /* Ajuster la taille des boutons pour impression */
-  .social-button {
-    border: 1px solid #000 !important;
-    background: #e7e7e7 !important;
-    color: #000 !important;
-    transform: none !important;
-  }
+/* ---------------------------------------------------------
+   SECTIONS GÉNÉRALES
+   Ces classes représentent les grandes sections du CV
+--------------------------------------------------------- */
+.welcome, .profile, .resume, .portfolio, .contact, .services {
+  padding-top: 10px;  /* Espace au-dessus de chaque section */
+  padding-bottom: 20px; /* Espace en dessous */
+}
 
-  /* Les liens restent cliquables */
-  a[href]::after {
-    content: none !important;
-  }
+.welcome {
+  padding-top: 100px !important; /* Espace supplémentaire spécifique au header */
+}
 
-  /* Retirer animations hover inutiles en PDF */
-  *:hover {
-    transform: none !important;
-  }
 
-  /* Évite les coupures bizarres dans le portfolio */
-  .thumbnail,
-  .project-box {
-    page-break-inside: avoid !important;
-  }
+/* ---------------------------------------------------------
+   TITRE D’ACCUEIL (H1, H2)
+--------------------------------------------------------- */
+.welcome-content h1 {
+  font-weight: 900; /* Très gras */
+  font-size: 56px;  /* Titre très large */
+}
 
+.welcome-content h2 {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.welcome-content p {
+  padding-top: 10px; /* Petit espace au-dessus du paragraphe */
+  font-size: 14px;
+}
+
+.welcome-content p a {
+  padding: 0 5px; /* Espacement interne gauche/droite */
+  color: #000;     /* Couleur du lien */
+}
+
+
+/* -----------------------------------------------------
+   BOUTONS SOCIAUX : STYLE GLOBAL
+----------------------------------------------------- */
+.social-button {
+  background-color: #e7e7e7;     /* couleur de fond */
+  border: 1px solid #696969;     /* bordure */
+  color: #000;                   /* couleur du texte + icône */
+  padding: 10px 30px;            /* taille du bouton */
+  border-radius: 6px;            /* arrondis : plus tu montes, plus c'est arrondi */
+  font-size: 15px;               /* taille du texte */
+  display: inline-flex;          /* centre l’icône verticalement */
+  align-items: center;           /* centre vertical */
+  gap: 10px;                     /* espace entre icône et texte */
+  transition: 0.3s ease;         /* animation sur hover */
+  text-decoration: none;         /* retire le soulignement */
+}
+
+/* -----------------------------------------------------
+   ICÔNE DANS LE BOUTON
+----------------------------------------------------- */
+.social-button i {
+  font-size: 18px;               /* taille de l’icône */
+}
+
+/* -----------------------------------------------------
+   STYLE AU SURVOL
+----------------------------------------------------- */
+.social-button:hover {
+  background-color: #000080;     /* fond au hover */
+  color: #fff;                   /* couleur texte/icône au hover */
+  border-color: #000080;         /* bordure au hover */
+  transform: translateY(-3px);   /* petit effet "soulèvement" */
+}
+
+/* -----------------------------------------------------
+   ESPACEMENT ENTRE LES BOUTONS
+----------------------------------------------------- */
+.social-button + .social-button {
+  margin-left: 15px;             /* espace horizontal entre les boutons */
+}
+
+/* Si tu veux les centrer */
+.social-container {
+  text-align: center;
+}
+
+/* ---------------------------------------------------------
+   TITRES AVEC BARRE / ICÔNE (h3.head-bar)
+--------------------------------------------------------- */
+h3.head-bar {
+  font-weight: 700; /* Titre plus gras */
+  color: #000080;    /* Bleu foncé */
+  font-size: 24px;   /* Taille */
+  margin-top: 0px;    /* Réduit l'espace au-dessus du titre */
+  margin-bottom: 10px; /* Réduit l'espace en dessous */
+}
+
+h3.head-bar i {
+  padding-right: 10px; /* Espace entre l'icone et le texte */
+}
+
+/* Couleur des H1 et H2 partout */
+h1, h2 {
+  color: #000080;
+}
+
+
+/* ---------------------------------------------------------
+   BARRES DE PROGRESSION (Compétences)
+--------------------------------------------------------- */
+.progress-bar {
+  background-color: #000080; /* Couleur de la barre */
+}
+
+
+/* ---------------------------------------------------------
+   LIGNES <hr>
+--------------------------------------------------------- */
+
+/* Grande ligne dégradée */
+hr.hr-line1 {
+  border: 0;      /* Supprime la bordure HTML */
+  height: 1px;    /* Épaisseur de la ligne */
+  background: #333; /* Base */
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  margin: 2px 0; /* ESPACE AU-DESSUS ET EN DESSOUS */
+}
+
+/* Ligne simple */
+hr.hr-line2 {
+  border: 0;
+  height: 0; /* On laisse uniquement les bordures */
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  margin-top: 15px 0;
+  margin-bottom: 15px;
+}
+
+
+/* ---------------------------------------------------------
+   SECTION ÉDUCATION
+--------------------------------------------------------- */
+article.education {
+  padding: 10px 0 10px 0; /* top / right / bottom / left */
+}
+
+.education h1 {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.education small {
+  color: #696969; /* Gris */
+  font-size: 15px;
+  padding-left: 0px; /* Espace avant la mention/alternance */
+}
+
+.education h2 {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.education h3 {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+
+/* ---------------------------------------------------------
+   SECTION EXPÉRIENCES PRO
+--------------------------------------------------------- */
+article.work {
+  padding: 5px 0 10px 0;
+}
+
+.work h1 {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.work small {
+  color: #696969;
+  font-size: 15px;
+  padding-left: 15px;
+}
+
+.work h2 {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.work h3 {
+  font-weight: 300;
+  font-size: 14px;
+  margin: 1px 0; /* → Réduit espace au-dessus et en dessous */
+}
+
+.work p {
+  padding-top: 5px;
+}
+
+
+/* ---------------------------------------------------------
+   ÉTIQUETTES (ex: niveaux, rôles)
+--------------------------------------------------------- */
+.label {
+  font-weight: 300;
+  font-size: 12px;
+  padding: 2px 8px; /* Épaisseur intérieure */
+}
+
+
+/* ---------------------------------------------------------
+   BOUTONS DES MINIATURES
+--------------------------------------------------------- */
+.thumbnail-button {
+  background-color: #000080;
+  border: 1px solid #efefef;
+}
+.portfolio {
+    padding-top: 0px;
+}
+/* Réduit l’espace sous le titre du portfolio */
+.portfolio .head-bar {
+    margin-bottom: 30px !important;  /* espace sous le titre */
+    margin-top: 0 !important;        /* retire l'espace au-dessus */
+}
+
+
+/* ---------------------------------------------------------
+   SECTION CONTACT
+--------------------------------------------------------- */
+.contact {
+  background-color: #E1EDF7; /* Bleu très clair */
+}
+
+
+/* ---------------------------------------------------------
+   SERVICES = 5 colonnes flex
+--------------------------------------------------------- */
+.services-row {
+  display: flex;               /* Active le flexbox */
+  justify-content: space-between; /* Espace égal entre les colonnes */
+  flex-wrap: wrap;             /* Passe à la ligne si manque de place */
+  gap: 20px;                   /* Espace entre colonnes */
+  margin-top: 15px;
+}
+
+.service-box {
+  flex: 1 1 calc(20% - 20px); /* (100% / 5 colonnes) - l’espace */
+  padding: 20px 10px;
+  text-align: center; /* Centre icône + texte */
+}
+
+.service-box i {
+  margin-bottom: 10px; /* Espace entre icône et texte */
+  display: block;
+}
+
+.map-responsive {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* ratio 16:9, parfait pour la carte */
+  overflow: hidden;
+  border-radius: 8px; /* optionnel : angles arrondis */
+}
+
+.map-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;  /* occupe toute la largeur */
+  height: 100%; /* s’ajuste à la hauteur */
+  border: 0;
 }
